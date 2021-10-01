@@ -5,7 +5,7 @@ function ApiTest() {
   let [locations, setLocations] = useState([]);
 
   function searchApi() {
-    const url = "https://stoplight.io/mocks/jeju/fall-jeju/22435321";
+    const url = process.env.API_BASEURL;
     axios
       .get(url + "/locations")
       .then(function (response) {
