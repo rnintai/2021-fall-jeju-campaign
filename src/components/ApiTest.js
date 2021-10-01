@@ -17,7 +17,7 @@ function ApiTest() {
       });
   }
 
-  if (locations !== undefined && locations.length > 0)
+  if (locations !== undefined && locations.length > 0) {
     return locations.map((location) => (
       <div key={location.id} className="title">
         <p>{location.title}</p>
@@ -25,7 +25,7 @@ function ApiTest() {
         <p>{location.sights}</p>
       </div>
     ));
-  else {
+  } else {
     searchApi();
     return null;
   }
