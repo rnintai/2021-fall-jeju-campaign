@@ -1,15 +1,10 @@
-import logo from "./assets/logo.svg";
 import "./App.css";
-import ApiTest from "./components/ApiTest";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Kim, Min-tae</p>
-      </header>
-      <ApiTest></ApiTest>
+      <Home></Home>
     </div>
   );
 }
