@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Location = styled.section`
+const LocationWrap = styled.section`
   :nth-child(even) {
     flex-direction: row-reverse;
   }
@@ -15,7 +15,7 @@ export const Location = styled.section`
   }
 `;
 
-export const Thumb = styled.img.attrs((props) => ({
+const Thumb = styled.img.attrs((props) => ({
   src: props.src,
 }))`
   width: 100px;
@@ -28,35 +28,51 @@ export const Thumb = styled.img.attrs((props) => ({
 `;
 
 // Wrap
-export const Metadata = styled.div`
+const Metadata = styled.div`
   display: flex;
   text-align: left;
   flex-direction: column;
   width: 100%;
 `;
 // Title
-export const MetaTitle = styled.div`
+const MetaTitle = styled.div`
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 5px;
 `;
-export const MetaTitleNumber = styled.h3`
+const MetaTitleNumber = styled.h3`
   display: inline-block;
   color: #f17031;
 `;
-export const MetaTitleContent = styled.h3`
+const MetaTitleContent = styled.h3`
   display: inline-block;
 `;
 
 // Desc
-export const MetaDesc = styled.p`
+const MetaDesc = styled.p`
   font-size: 13px;
   font-weight: 400;
   color: #5e5e5e;
 `;
 // Sights
-export const MetaSights = styled.span`
+const MetaSights = styled.span`
   font-size: 13px;
   font-weight: 300;
   color: #6b9929;
 `;
+
+export function Location({ locations }) {
+  return locations.map((location) => (
+    <LocationWrap key={location.id}>
+      <Thumb src={location.thumb}></Thumb>
+      <Metadata>
+        <MetaTitle>
+          <MetaTitleNumber>{location.id}.&nbsp;</MetaTitleNumber>
+          <MetaTitleContent>{location.title}</MetaTitleContent>
+        </MetaTitle>
+        <MetaDesc>{location.description}</MetaDesc>
+        <MetaSights>추천명소 : {location.sights.join(", ")}</MetaSights>
+      </Metadata>
+    </LocationWrap>
+  ));
+}
