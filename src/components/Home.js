@@ -1,12 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 
 import Locations from "./Locations";
 import Tickets from "./Tickets";
-
-const Background = styled.main`
-  background-color: #fef2c6;
-`;
+import { Background } from "./styled/Home";
 
 const Home = () => {
   return (
