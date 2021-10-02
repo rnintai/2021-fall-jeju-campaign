@@ -1,5 +1,17 @@
 import React, { useState } from "react";
+
 import axios from "axios";
+
+import {
+  Location,
+  Thumb,
+  Metadata,
+  MetaTitle,
+  MetaTitleNumber,
+  MetaTitleContent,
+  MetaDesc,
+  MetaSights,
+} from "./styled/Location";
 
 function Locations() {
   let [locations, setLocations] = useState([]);
@@ -10,22 +22,25 @@ function Locations() {
       .get(url + "/locations")
       .then(function (response) {
         setLocations(response.data.locations);
-        console.log(response.data.locations);
-        console.log(url);
       })
       .catch(function (error) {
-        console.log(url);
         console.log("실패");
       });
   }
 
   if (locations !== undefined && locations.length > 0) {
     return locations.map((location) => (
-      <div key={location.id} className="title">
-        <p>{location.title}</p>
-        <p>{location.description}</p>
-        <p>{location.sights}</p>
-      </div>
+      <Location key={location.id}>
+        <Thumb src={location.thumb}></Thumb>
+        <Metadata>
+          <MetaTitle>
+            <MetaTitleNumber>{location.id}.&nbsp;</MetaTitleNumber>
+            <MetaTitleContent>{location.title}</MetaTitleContent>
+          </MetaTitle>
+          <MetaDesc>{location.description}</MetaDesc>
+          <MetaSights>추천명소 : {location.sights.join(", ")}</MetaSights>
+        </Metadata>
+      </Location>
     ));
   } else {
     searchApi();
