@@ -83,6 +83,39 @@ const TitleWrap = styled.div`
 const Location = styled.span``;
 const TicketTitle = styled.span``;
 
+const CostWrap = styled.div``;
+const StyledCost = styled.span`
+  color: ${(props) => (props.discount ? "#818181" : "#000")};
+  text-decoration-line: ${(props) =>
+    props.discount ? "line-through" : "none"};
+`;
+const DiscountedCost = styled.span`
+  color: black;
+  text-decoration-line: none;
+`;
+
+function Price(cost, ratio) {
+  var currency_formatter = new Intl.NumberFormat("ko-KR", {
+    style: "currency",
+    currency: "KRW",
+  });
+
+  if (ratio === undefined) {
+    return <StyledCost>{cost}</StyledCost>;
+  } else {
+    // \14,000 -> 14,000 -> 14,000원
+    const cost_str = currency_formatter.format(cost).substr(1) + "원";
+    const discounted_str =
+      currency_formatter.format(cost * (1 - ratio)).substr(1) + "원";
+    return (
+      <CostWrap>
+        <StyledCost discount="true">{cost_str}</StyledCost>
+        <DiscountedCost>{discounted_str}~</DiscountedCost>
+      </CostWrap>
+    );
+  }
+}
+
 export function Ticket({ tickets }) {
   var filtered_tickets_arr = [];
   filtered_tickets_arr = filter_by_tag(tickets, "#자연 #힐링");
@@ -93,12 +126,17 @@ export function Ticket({ tickets }) {
           <Thumb src={ticket.thumb}></Thumb>
           <Information>
             <Sort>{ticket.sort}</Sort>
-            <DiscountRatio>{ticket.discount_ratio * 100}%</DiscountRatio>
+            <DiscountRatio>
+              {ticket.discount_ratio !== undefined
+                ? ticket.discount_ratio * 100 + "%"
+                : ""}
+            </DiscountRatio>
           </Information>
           <TitleWrap>
             <Location>[{ticket.location}]</Location>
             <TicketTitle>{ticket.title}</TicketTitle>
           </TitleWrap>
+          {Price(ticket.cost, ticket.discount_ratio)}
         </StyledTicket>
       ))}
     </StyledTicketsWrap>
