@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
-const StyledIntroWrap = styled.header``;
+const StyledIntroWrap = styled.header`
+  margin-bottom: 3rem;
+`;
 const IntroImg = styled.img.attrs((props) => ({
   src: props.src,
 }))`
-  width: 120%;
-  transform: translateX(-10%);
+  width: 100%;
+  transform: scale(1.1);
 `;
 
 export function IntroWrap() {

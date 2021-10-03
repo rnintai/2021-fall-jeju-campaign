@@ -85,6 +85,7 @@ const StyledDiscountRatio = styled.span`
   background-color: ${({ theme }) => theme.color.orange};
   padding: 0 0.3rem;
   border-radius: 0.6rem;
+  font-weight: 700;
 `;
 
 function DiscountRatio({ ratio }) {
