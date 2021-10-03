@@ -1,10 +1,14 @@
 import "./App.css";
+import { ThemeProvider } from "styled-components";
+import theme from "./assets/styles/theme";
 import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
-      <Home></Home>
+      <ThemeProvider theme={theme}>
+        <Home></Home>
+      </ThemeProvider>
     </div>
   );
 }
