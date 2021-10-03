@@ -7,7 +7,7 @@ By Kim, Min tae
 
 ### 작업 순서
 
-![Untitled](/assets/image/readme_image/3rd%20(1).png)
+![Untitled](./assets/image/readme_image/3rd%20(1).png)
 
 - `Home` , `Locations`과 `Tickets`  컴포넌트 생성.  
 [Link](https://github.com/rnintai/2021-fall-jeju-campaign/commit/cf2f8724a8f085affb9837362279735e9f27ca27)
