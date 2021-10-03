@@ -96,13 +96,9 @@ function DiscountRatio({ ratio }) {
 const TitleWrap = styled.div`
   display: flex;
   font-size: ${({ theme }) => theme.fontSize.m};
-  flex-direction: row;
+  flex-direction: column;
   font-weight: 700;
   margin-bottom: 0.5rem;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
 `;
 const Location = styled.span``;
 const TicketTitle = styled.span``;
