@@ -46,6 +46,7 @@ const StyledTicketsWrap = styled.ul`
   background-color: #fff;
   border-radius: 0.8rem;
   padding-top: 2rem;
+  margin-bottom: 4rem;
 `;
 
 const StyledTicket = styled.li`
@@ -172,6 +173,13 @@ export function Ticket({ tickets }) {
 
 const StyledSeeMoreButton = styled.button`
   background-color: ${({ theme }) => theme.color.dark_red};
+  padding: 0.7rem 3rem;
+  font-size: ${({ theme }) => theme.fontSize.ml};
+  font-weight: 700;
+  color: white;
+  margin-bottom: 4rem;
+  border-radius: 2rem;
+  cursor: pointer;
 `;
 
 export function SeeMore({ text }) {
