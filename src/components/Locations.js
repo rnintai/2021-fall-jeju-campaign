@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import axios from "axios";
 
-import { Location } from "./styled/Location";
+import { LocationWrap } from "./styled/Location";
 
 function Locations() {
   let [locations, setLocations] = useState([]);
@@ -20,7 +20,7 @@ function Locations() {
   }
 
   if (locations !== undefined && locations.length > 0) {
-    return <Location locations={locations}></Location>;
+    return <LocationWrap locations={locations}></LocationWrap>;
   } else {
     searchApi();
     return null;

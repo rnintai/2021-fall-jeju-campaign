@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
-const LocationWrap = styled.section`
+const StyledLocationWrap = styled.ul`
+  margin-bottom: 6.3rem;
+`;
+
+const LocationItem = styled.li`
   :nth-child(even) {
     flex-direction: row-reverse;
   }
 
   display: flex;
   align-items: center;
-  margin-bottom: 2.5rem;
 
-  :last-child {
-    margin-bottom: 7.5rem;
+  :not(:last-child) {
+    margin-bottom: 2.5rem;
   }
 `;
 
@@ -62,9 +65,17 @@ const MetaSights = styled.span`
   color: ${({ theme }) => theme.color.green};
 `;
 
-export function Location({ locations }) {
+export function LocationWrap({ locations }) {
+  return (
+    <StyledLocationWrap>
+      <Location locations={locations}></Location>
+    </StyledLocationWrap>
+  );
+}
+
+function Location({ locations }) {
   return locations.map((location) => (
-    <LocationWrap key={location.id}>
+    <LocationItem key={location.id}>
       <Thumb src={location.thumb}></Thumb>
       <Metadata>
         <MetaTitle>
@@ -74,6 +85,6 @@ export function Location({ locations }) {
         <MetaDesc>{location.description}</MetaDesc>
         <MetaSights>추천명소 : {location.sights.join(", ")}</MetaSights>
       </Metadata>
-    </LocationWrap>
+    </LocationItem>
   ));
 }
