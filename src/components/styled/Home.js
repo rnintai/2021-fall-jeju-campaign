@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Background = styled.main`
   position: relative;
-  padding: 0 27%;
+  padding: 0 35%;
   background-color: #fef2c6;
   min-width: 500px;
 
