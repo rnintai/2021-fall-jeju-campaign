@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 export const TicketsWrap = styled.section`
@@ -14,39 +15,37 @@ const StyledTitle = styled.h3`
   margin: 3rem 0 1.5rem 0;
 `;
 
-export const TagWrap = styled.ul`
+const TagWrap = styled.ul`
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 `;
 
-export const StyledTagMenu = styled.li`
-  display: flex;
-  color: #c45722;
-  background-color: white;
+// const StyledTagMenu = styled.li`
+//   display: flex;
+// `;
+
+const TagBtn = styled.button`
+  cursor: pointer;
+  color: ${(props) =>
+    props.active === props.tag_id
+      ? "white"
+      : ({ theme }) => theme.color.dark_orange};
+  font-size: ${({ theme }) => theme.fontSize.ml};
+  background-color: ${(props) =>
+    props.active === props.tag_id
+      ? ({ theme }) => theme.color.orange
+      : "white"};
   border: 1px solid ${({ theme }) => theme.color.dark_orange};
   padding: 0.6rem 1.8rem;
-  cursor: pointer;
 `;
 
 export function Title({ text }) {
   return <StyledTitle>{text}</StyledTitle>;
 }
 
-export function TagMenu({ tickets }) {
-  var ticket_arr = [];
-  ticket_arr = filter_tag_duplication(tickets);
-
-  return (
-    <TagWrap>
-      {ticket_arr.map((ticket) => (
-        <StyledTagMenu key={ticket.id}>{ticket.tag}</StyledTagMenu>
-      ))}
-    </TagWrap>
-  );
-}
-
-const StyledTicketsWrap = styled.ul`
+const StyledTicketsWrap = styled.ul``;
+const StyledTicketsTable = styled.ul`
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
@@ -150,26 +149,49 @@ function Price(cost, ratio) {
 }
 
 export function Ticket({ tickets }) {
-  var filtered_tickets_arr = [];
-  filtered_tickets_arr = filter_by_tag(tickets, "#자연 #힐링");
+  var tag_arr = [];
+  tag_arr = filter_tag_duplication(tickets);
+
+  const [activated, setActivated] = useState(tag_arr[0].id);
+  const [sortedTickets, setSortedTickets] = useState(
+    filter_by_tag(tickets, tag_arr[0].tag)
+  );
+
   return (
     <StyledTicketsWrap>
-      {filtered_tickets_arr.map((ticket) => (
-        <StyledTicket key={ticket.id}>
-          <Thumb src={ticket.thumb}></Thumb>
-          <MetaData>
-            <Information>
-              <Sort>{ticket.sort}</Sort>
-              <DiscountRatio ratio={ticket.discount_ratio}></DiscountRatio>
-            </Information>
-            <TitleWrap>
-              <Location>[{ticket.location}]&nbsp;</Location>
-              <TicketTitle>{ticket.title}</TicketTitle>
-            </TitleWrap>
-            {Price(ticket.cost, ticket.discount_ratio)}
-          </MetaData>
-        </StyledTicket>
-      ))}
+      <TagWrap>
+        {tag_arr.map((tag) => (
+          <TagBtn
+            key={tag.id}
+            onClick={() => {
+              setActivated(tag.id);
+              setSortedTickets(filter_by_tag(tickets, tag.tag));
+            }}
+            tag_id={tag.id}
+            active={activated}
+          >
+            {tag.tag}
+          </TagBtn>
+        ))}
+      </TagWrap>
+      <StyledTicketsTable>
+        {sortedTickets.map((ticket) => (
+          <StyledTicket key={ticket.id}>
+            <Thumb src={ticket.thumb}></Thumb>
+            <MetaData>
+              <Information>
+                <Sort>{ticket.sort}</Sort>
+                <DiscountRatio ratio={ticket.discount_ratio}></DiscountRatio>
+              </Information>
+              <TitleWrap>
+                <Location>[{ticket.location}]&nbsp;</Location>
+                <TicketTitle>{ticket.title}</TicketTitle>
+              </TitleWrap>
+              {Price(ticket.cost, ticket.discount_ratio)}
+            </MetaData>
+          </StyledTicket>
+        ))}
+      </StyledTicketsTable>
     </StyledTicketsWrap>
   );
 }
@@ -200,7 +222,10 @@ function filter_tag_duplication(src_arr) {
   var result_arr = [];
   // copy array.
   src_arr.forEach(function (ticket) {
-    result_arr.push(ticket);
+    result_arr.push({
+      id: ticket.id,
+      tag: ticket.tag,
+    });
   });
 
   // remove duplications
