@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledTitle = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: 700;
-  margin: 50px 0 25px 0;
+  margin: 3rem 0 1.5rem 0;
 `;
 
 export const TicketsWrap = styled.section``;
@@ -11,7 +11,7 @@ export const TicketsWrap = styled.section``;
 export const TagWrap = styled.ul`
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 `;
 
 export const StyledTagMenu = styled.li`
@@ -19,7 +19,7 @@ export const StyledTagMenu = styled.li`
   color: #c45722;
   background-color: white;
   border: 1px solid ${({ theme }) => theme.color.dark_orange};
-  padding: 8px 25px;
+  padding: 0.6rem 1.8rem;
   cursor: pointer;
 `;
 
@@ -44,8 +44,8 @@ const StyledTicketsWrap = styled.ul`
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  border-radius: 14px;
-  padding-top: 30px;
+  border-radius: 0.8rem;
+  padding-top: 2rem;
 `;
 
 const StyledTicket = styled.li`
@@ -53,13 +53,13 @@ const StyledTicket = styled.li`
   flex-direction: column;
   align-items: center;
   width: 50%;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 `;
 const Thumb = styled.img.attrs((props) => ({
   src: props.src,
 }))`
   width: 80%;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   margin-bottom: 1rem;
 `;
 
@@ -80,7 +80,7 @@ const StyledDiscountRatio = styled.span`
   color: white;
   background-color: ${({ theme }) => theme.color.orange};
   padding: 0 0.3rem;
-  border-radius: 10px;
+  border-radius: 0.6rem;
 `;
 
 function DiscountRatio({ ratio }) {

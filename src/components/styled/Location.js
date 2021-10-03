@@ -7,22 +7,22 @@ const LocationWrap = styled.section`
 
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 
   :last-child {
-    margin-bottom: 100px;
+    margin-bottom: 7.5rem;
   }
 `;
 
 const Thumb = styled.img.attrs((props) => ({
   src: props.src,
 }))`
-  width: 100px;
-  height: 100px;
-  border: 5px solid ${({ theme }) => theme.color.light_green};
+  width: 6.3rem;
+  height: 6.3rem;
+  border: 0.3rem solid ${({ theme }) => theme.color.light_green};
   border-radius: 100%;
   :nth-child(odd) {
-    margin: 0 15px;
+    margin: 0 1rem;
   }
 `;
 
@@ -35,7 +35,7 @@ const Metadata = styled.div`
 `;
 // Title
 const MetaTitle = styled.div`
-  margin-bottom: 5px;
+  margin-bottom: 0.3rem;
 `;
 const MetaTitleNumber = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.l};
