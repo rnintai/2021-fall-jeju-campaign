@@ -83,7 +83,12 @@ function Location({ locations }) {
           <MetaTitleContent>{location.title}</MetaTitleContent>
         </MetaTitle>
         <MetaDesc>{location.description}</MetaDesc>
-        <MetaSights>추천명소 : {location.sights.join(", ")}</MetaSights>
+        <MetaSights>
+          추천명소 :{" "}
+          {location.sights.length > 3
+            ? location.sights.slice(1, 3).join(", ") + " 등"
+            : location.sights.slice(1, 3).join(", ")}
+        </MetaSights>
       </Metadata>
     </LocationItem>
   ));
