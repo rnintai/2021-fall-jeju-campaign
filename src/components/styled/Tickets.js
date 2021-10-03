@@ -18,7 +18,7 @@ export const StyledTagMenu = styled.li`
   display: flex;
   color: #c45722;
   background-color: white;
-  border: 1px solid #c45722;
+  border: 1px solid ${({ theme }) => theme.color.dark_orange};
   padding: 8px 25px;
   cursor: pointer;
 `;
@@ -88,7 +88,8 @@ const TicketTitle = styled.span``;
 
 const CostWrap = styled.div``;
 const StyledCost = styled.span`
-  color: ${(props) => (props.discount ? "#818181" : "#000")};
+  color: ${(props) =>
+    props.discount ? ({ theme }) => theme.color.gray : "#000"};
   text-decoration-line: ${(props) =>
     props.discount ? "line-through" : "none"};
 `;

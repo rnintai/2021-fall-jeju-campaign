@@ -19,7 +19,7 @@ const Thumb = styled.img.attrs((props) => ({
 }))`
   width: 100px;
   height: 100px;
-  border: 5px solid #b8d563;
+  border: 5px solid ${({ theme }) => theme.color.light_green};
   border-radius: 100%;
   :nth-child(odd) {
     margin: 0 15px;
@@ -41,7 +41,7 @@ const MetaTitle = styled.div`
 `;
 const MetaTitleNumber = styled.h3`
   display: inline-block;
-  color: #f17031;
+  color: ${({ theme }) => theme.color.orange};
 `;
 const MetaTitleContent = styled.h3`
   display: inline-block;
@@ -51,13 +51,13 @@ const MetaTitleContent = styled.h3`
 const MetaDesc = styled.p`
   font-size: 13px;
   font-weight: 400;
-  color: #5e5e5e;
+  color: ${({ theme }) => theme.color.gray};
 `;
 // Sights
 const MetaSights = styled.span`
   font-size: 13px;
   font-weight: 300;
-  color: #6b9929;
+  color: ${({ theme }) => theme.color.green};
 `;
 
 export function Location({ locations }) {
