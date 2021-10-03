@@ -7,11 +7,10 @@ const LocationWrap = styled.section`
 
   display: flex;
   align-items: center;
-  margin: 0 10% 40px 10%;
+  margin-bottom: 40px;
 
   :last-child {
-    padding-bottom: 100px;
-    margin: 0 10% 0 10%;
+    margin-bottom: 100px;
   }
 `;
 
