@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledLocationWrap = styled.ul`
-  margin-bottom: 6.3rem;
+  margin-bottom: 5rem;
 `;
 
 const LocationItem = styled.li`
