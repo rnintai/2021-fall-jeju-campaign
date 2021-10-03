@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledTitle = styled.h3`
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: 700;
   margin: 50px 0 25px 0;
 `;
@@ -60,6 +60,7 @@ const Thumb = styled.img.attrs((props) => ({
 }))`
   width: 80%;
   border-radius: 10px;
+  margin-bottom: 1rem;
 `;
 
 const MetaData = styled.section`
@@ -69,16 +70,31 @@ const MetaData = styled.section`
 
 const Information = styled.div`
   display: flex;
+  font-size: ${({ theme }) => theme.fontSize.ms};
   justify-content: space-between;
 `;
+const Sort = styled.span`
+  color: ${({ theme }) => theme.color.gray};
+`;
+const StyledDiscountRatio = styled.span`
+  color: white;
+  background-color: ${({ theme }) => theme.color.orange};
+  padding: 0 0.3rem;
+  border-radius: 10px;
+`;
 
-const Sort = styled.span``;
-
-const DiscountRatio = styled.span``;
+function DiscountRatio({ ratio }) {
+  return ratio !== undefined ? (
+    <StyledDiscountRatio>{ratio * 100 + "%"}</StyledDiscountRatio>
+  ) : null;
+}
 
 const TitleWrap = styled.div`
   display: flex;
+  font-size: ${({ theme }) => theme.fontSize.m};
   flex-direction: row;
+  font-weight: 700;
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
@@ -86,7 +102,9 @@ const TitleWrap = styled.div`
 const Location = styled.span``;
 const TicketTitle = styled.span``;
 
-const CostWrap = styled.div``;
+const CostWrap = styled.div`
+  font-size: ${({ theme }) => theme.fontSize.m};
+`;
 const StyledCost = styled.span`
   color: ${(props) =>
     props.discount ? ({ theme }) => theme.color.gray : "#000"};
@@ -96,6 +114,7 @@ const StyledCost = styled.span`
 const DiscountedCost = styled.span`
   color: black;
   text-decoration-line: none;
+  font-weight: 800;
 `;
 
 function Price(cost, ratio) {
@@ -131,11 +150,7 @@ export function Ticket({ tickets }) {
           <MetaData>
             <Information>
               <Sort>{ticket.sort}</Sort>
-              <DiscountRatio>
-                {ticket.discount_ratio !== undefined
-                  ? ticket.discount_ratio * 100 + "%"
-                  : ""}
-              </DiscountRatio>
+              <DiscountRatio ratio={ticket.discount_ratio}></DiscountRatio>
             </Information>
             <TitleWrap>
               <Location>[{ticket.location}]&nbsp;</Location>
