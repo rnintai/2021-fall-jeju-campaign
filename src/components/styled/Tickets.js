@@ -43,7 +43,6 @@ export function TagMenu({ tickets }) {
 const StyledTicketsWrap = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 100px;
   background-color: #fff;
   border-radius: 14px;
   padding-top: 30px;
@@ -63,10 +62,14 @@ const Thumb = styled.img.attrs((props) => ({
   border-radius: 10px;
 `;
 
+const MetaData = styled.section`
+  width: 80%;
+  text-align: left;
+`;
+
 const Information = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 80%;
 `;
 
 const Sort = styled.span``;
@@ -124,19 +127,21 @@ export function Ticket({ tickets }) {
       {filtered_tickets_arr.map((ticket) => (
         <StyledTicket key={ticket.id}>
           <Thumb src={ticket.thumb}></Thumb>
-          <Information>
-            <Sort>{ticket.sort}</Sort>
-            <DiscountRatio>
-              {ticket.discount_ratio !== undefined
-                ? ticket.discount_ratio * 100 + "%"
-                : ""}
-            </DiscountRatio>
-          </Information>
-          <TitleWrap>
-            <Location>[{ticket.location}]</Location>
-            <TicketTitle>{ticket.title}</TicketTitle>
-          </TitleWrap>
-          {Price(ticket.cost, ticket.discount_ratio)}
+          <MetaData>
+            <Information>
+              <Sort>{ticket.sort}</Sort>
+              <DiscountRatio>
+                {ticket.discount_ratio !== undefined
+                  ? ticket.discount_ratio * 100 + "%"
+                  : ""}
+              </DiscountRatio>
+            </Information>
+            <TitleWrap>
+              <Location>[{ticket.location}]&nbsp;</Location>
+              <TicketTitle>{ticket.title}</TicketTitle>
+            </TitleWrap>
+            {Price(ticket.cost, ticket.discount_ratio)}
+          </MetaData>
         </StyledTicket>
       ))}
     </StyledTicketsWrap>
