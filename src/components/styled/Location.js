@@ -35,27 +35,29 @@ const Metadata = styled.div`
 `;
 // Title
 const MetaTitle = styled.div`
-  font-size: 18px;
-  font-weight: 700;
   margin-bottom: 5px;
 `;
 const MetaTitleNumber = styled.h3`
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: 700;
   display: inline-block;
   color: ${({ theme }) => theme.color.orange};
 `;
 const MetaTitleContent = styled.h3`
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: 700;
   display: inline-block;
 `;
 
 // Desc
 const MetaDesc = styled.p`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.ms};
   font-weight: 400;
   color: ${({ theme }) => theme.color.gray};
 `;
 // Sights
 const MetaSights = styled.span`
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fontSize.ms};
   font-weight: 300;
   color: ${({ theme }) => theme.color.green};
 `;
