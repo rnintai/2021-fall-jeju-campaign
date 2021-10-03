@@ -9,11 +9,13 @@ const color = {
 };
 
 const fontSize = {
-  l: "1.4rem",
-  ml: "1.2rem",
+  xl: "1.4rem",
+  l: "1.2rem",
+  ml: "1.1rem",
   m: "1rem",
-  ms: "0.8rem",
-  s: "0.6rem",
+  ms: "0.9rem",
+  s: "0.8rem",
+  xs: "0.6rem",
 };
 
 const theme = {
