@@ -64,6 +64,8 @@ const Thumb = styled.img.attrs((props) => ({
 `;
 
 const MetaData = styled.section`
+  display: flex;
+  flex-direction: column;
   width: 80%;
   text-align: left;
 `;
@@ -72,6 +74,7 @@ const Information = styled.div`
   display: flex;
   font-size: ${({ theme }) => theme.fontSize.ms};
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 `;
 const Sort = styled.span`
   color: ${({ theme }) => theme.color.gray};
@@ -94,6 +97,7 @@ const TitleWrap = styled.div`
   font-size: ${({ theme }) => theme.fontSize.m};
   flex-direction: row;
   font-weight: 700;
+  margin-bottom: 0.5rem;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -110,6 +114,8 @@ const StyledCost = styled.span`
     props.discount ? ({ theme }) => theme.color.gray : "#000"};
   text-decoration-line: ${(props) =>
     props.discount ? "line-through" : "none"};
+  font-weight: ${(props) => (props.discount ? "300" : "700")};
+  margin-right: 0.3rem;
 `;
 const DiscountedCost = styled.span`
   color: black;
@@ -122,12 +128,12 @@ function Price(cost, ratio) {
     style: "currency",
     currency: "KRW",
   });
+  const cost_str = currency_formatter.format(cost).substr(1) + "원";
 
   if (ratio === undefined) {
-    return <StyledCost>{cost}</StyledCost>;
+    return <StyledCost>{cost_str}</StyledCost>;
   } else {
     // \14,000 -> 14,000 -> 14,000원
-    const cost_str = currency_formatter.format(cost).substr(1) + "원";
     const discounted_str =
       currency_formatter.format(cost * (1 - ratio)).substr(1) + "원";
     return (
@@ -162,6 +168,14 @@ export function Ticket({ tickets }) {
       ))}
     </StyledTicketsWrap>
   );
+}
+
+const StyledSeeMoreButton = styled.button`
+  background-color: ${({ theme }) => theme.color.dark_red};
+`;
+
+export function SeeMore({ text }) {
+  return <StyledSeeMoreButton>{text}</StyledSeeMoreButton>;
 }
 
 /**

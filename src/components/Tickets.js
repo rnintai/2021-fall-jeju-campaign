@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import { TicketsWrap, Title, TagMenu, Ticket } from "./styled/Tickets";
+import { TicketsWrap, Title, TagMenu, Ticket, SeeMore } from "./styled/Tickets";
 
 function Tickets() {
   let [tickets, setTickets] = useState([]);
@@ -24,6 +24,7 @@ function Tickets() {
         <Title text="#내가 원하는 제주 여행은?"></Title>
         <TagMenu tickets={tickets}></TagMenu>
         <Ticket tickets={tickets}></Ticket>
+        <SeeMore text="제주 상품 더 보기"></SeeMore>
       </TicketsWrap>
     );
   } else {
