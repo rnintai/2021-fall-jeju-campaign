@@ -6,6 +6,8 @@ const color = {
 
   green: "#6b9929",
   light_green: "#b8d563",
+
+  dark_red: "#d9463e",
 };
 
 const fontSize = {
