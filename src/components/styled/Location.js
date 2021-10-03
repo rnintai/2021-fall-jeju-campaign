@@ -86,8 +86,8 @@ function Location({ locations }) {
         <MetaSights>
           추천명소 :{" "}
           {location.sights.length > 3
-            ? location.sights.slice(1, 3).join(", ") + " 등"
-            : location.sights.slice(1, 3).join(", ")}
+            ? location.sights.slice(0, 3).join(", ") + " 등"
+            : location.sights.slice(0, 3).join(", ")}
         </MetaSights>
       </Metadata>
     </LocationItem>
