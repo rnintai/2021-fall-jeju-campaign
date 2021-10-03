@@ -2,12 +2,16 @@ import styled from "styled-components";
 
 const StyledIntroWrap = styled.header`
   margin-bottom: 3rem;
+  padding: 0 25%;
+  transition: padding 0.5s ease-in-out;
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
 `;
 const IntroImg = styled.img.attrs((props) => ({
   src: props.src,
 }))`
   width: 100%;
-  transform: scale(1.1);
 `;
 
 export function IntroWrap() {

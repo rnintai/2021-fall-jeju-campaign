@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
+export const TicketsWrap = styled.section`
+  padding: 0 25%;
+  transition: padding 0.5s ease-in-out;
+  @media screen and (max-width: 768px) {
+    padding: 0 7%;
+  }
+`;
+
 const StyledTitle = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.l};
   font-weight: 700;
   margin: 3rem 0 1.5rem 0;
 `;
-
-export const TicketsWrap = styled.section``;
 
 export const TagWrap = styled.ul`
   display: flex;

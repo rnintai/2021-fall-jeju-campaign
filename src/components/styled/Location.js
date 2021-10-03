@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 const StyledLocationWrap = styled.ul`
   margin-bottom: 5rem;
+  padding: 0 25%;
+  transition: padding 0.5s ease-in-out;
+  @media screen and (max-width: 768px) {
+    padding: 0 7%;
+  }
 `;
 
 const LocationItem = styled.li`

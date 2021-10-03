@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 const StyledMapWrap = styled.section`
   margin-bottom: 3rem;
+  padding: 0 25%;
+  transition: padding 0.5s ease-in-out;
+  @media screen and (max-width: 768px) {
+    padding: 0 7%;
+  }
 `;
 const StyledTitle = styled.div`
   font-size: ${({ theme }) => theme.fontSize.xl};
