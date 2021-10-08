@@ -18,10 +18,10 @@ const StyledStrongTitle = styled.span`
 `;
 const StyledPlainTitle = styled.span``;
 
-function Title({ strong_text, text }) {
+function Title({ strongText, text }) {
   return (
     <StyledTitle>
-      <StyledStrongTitle>{strong_text}</StyledStrongTitle>
+      <StyledStrongTitle>{strongText}</StyledStrongTitle>
       <StyledPlainTitle>{text}</StyledPlainTitle>
     </StyledTitle>
   );
@@ -36,7 +36,7 @@ const MapImage = styled.img.attrs((props) => ({
 export function MapWrap() {
   return (
     <StyledMapWrap>
-      <Title strong_text="제주 쉬기좋은 " text="지역별 안내"></Title>
+      <Title strongText="제주 쉬기좋은 " text="지역별 안내"></Title>
       <MapImage src="https://github.com/rnintai/2021-fall-jeju-campaign/blob/master/src/assets/image/jeju_map.png?raw=true"></MapImage>
     </StyledMapWrap>
   );

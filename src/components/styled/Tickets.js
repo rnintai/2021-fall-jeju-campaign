@@ -28,15 +28,13 @@ const TagWrap = styled.ul`
 const TagBtn = styled.button`
   cursor: pointer;
   color: ${(props) =>
-    props.active === props.tag_id
+    props.active === props.tagId
       ? "white"
-      : ({ theme }) => theme.color.dark_orange};
+      : ({ theme }) => theme.color.darkOrange};
   font-size: ${({ theme }) => theme.fontSize.ml};
   background-color: ${(props) =>
-    props.active === props.tag_id
-      ? ({ theme }) => theme.color.orange
-      : "white"};
-  border: 1px solid ${({ theme }) => theme.color.dark_orange};
+    props.active === props.tagId ? ({ theme }) => theme.color.orange : "white"};
+  border: 1px solid ${({ theme }) => theme.color.darkOrange};
   padding: 0.6rem 1.8rem;
 `;
 
@@ -127,47 +125,47 @@ const DiscountedCost = styled.span`
 `;
 
 function Price(cost, ratio) {
-  var currency_formatter = new Intl.NumberFormat("ko-KR", {
+  var currencyFormatter = new Intl.NumberFormat("ko-KR", {
     style: "currency",
     currency: "KRW",
   });
-  const cost_str = currency_formatter.format(cost).substr(1) + "원";
+  const costStr = currencyFormatter.format(cost).substr(1) + "원";
 
   if (ratio === undefined) {
-    return <StyledCost>{cost_str}</StyledCost>;
+    return <StyledCost>{costStr}</StyledCost>;
   } else {
     // \14,000 -> 14,000 -> 14,000원
-    const discounted_str =
-      currency_formatter.format(cost * (1 - ratio)).substr(1) + "원";
+    const discountedStr =
+      currencyFormatter.format(cost * (1 - ratio)).substr(1) + "원";
     return (
       <CostWrap>
-        <StyledCost discount="true">{cost_str}</StyledCost>
-        <DiscountedCost>{discounted_str}~</DiscountedCost>
+        <StyledCost discount="true">{costStr}</StyledCost>
+        <DiscountedCost>{discountedStr}~</DiscountedCost>
       </CostWrap>
     );
   }
 }
 
 export function Ticket({ tickets }) {
-  var tag_arr = [];
-  tag_arr = filter_tag_duplication(tickets);
+  var tagArr = [];
+  tagArr = filterTagDuplication(tickets);
 
-  const [activated, setActivated] = useState(tag_arr[0].id);
+  const [activated, setActivated] = useState(tagArr[0].id);
   const [sortedTickets, setSortedTickets] = useState(
-    filter_by_tag(tickets, tag_arr[0].tag)
+    filterByTag(tickets, tagArr[0].tag)
   );
 
   return (
     <StyledTicketsWrap>
       <TagWrap>
-        {tag_arr.map((tag) => (
+        {tagArr.map((tag) => (
           <TagBtn
             key={tag.id}
             onClick={() => {
               setActivated(tag.id);
-              setSortedTickets(filter_by_tag(tickets, tag.tag));
+              setSortedTickets(filterByTag(tickets, tag.tag));
             }}
-            tag_id={tag.id}
+            tagId={tag.id}
             active={activated}
           >
             {tag.tag}
@@ -181,13 +179,13 @@ export function Ticket({ tickets }) {
             <MetaData>
               <Information>
                 <Sort>{ticket.sort}</Sort>
-                <DiscountRatio ratio={ticket.discount_ratio}></DiscountRatio>
+                <DiscountRatio ratio={ticket.discountRatio}></DiscountRatio>
               </Information>
               <TitleWrap>
                 <Location>[{ticket.location}]&nbsp;</Location>
                 <TicketTitle>{ticket.title}</TicketTitle>
               </TitleWrap>
-              {Price(ticket.cost, ticket.discount_ratio)}
+              {Price(ticket.cost, ticket.discountRatio)}
             </MetaData>
           </StyledTicket>
         ))}
@@ -197,7 +195,7 @@ export function Ticket({ tickets }) {
 }
 
 const StyledSeeMoreButton = styled.button`
-  background-color: ${({ theme }) => theme.color.dark_red};
+  background-color: ${({ theme }) => theme.color.darkRed};
   padding: 0.7rem 3rem;
   font-size: ${({ theme }) => theme.fontSize.ml};
   font-weight: 700;
@@ -212,52 +210,52 @@ export function SeeMore({ text }) {
 }
 
 /**
- * filter_tag_duplication
+ * filterTagDuplication
  * 태그의 중복을 제거해준다. 태그 메뉴 탭 표시용
- * @param src_arr - Original 배열
+ * @param srcArr - Original 배열
  * @returns 중복 제거된 tickets 배열
  */
 
-function filter_tag_duplication(src_arr) {
-  var result_arr = [];
+function filterTagDuplication(srcArr) {
+  var resultArr = [];
   // copy array.
-  src_arr.forEach(function (ticket) {
-    result_arr.push({
+  srcArr.forEach(function (ticket) {
+    resultArr.push({
       id: ticket.id,
       tag: ticket.tag,
     });
   });
 
   // remove duplications
-  result_arr = src_arr.filter((elem, i) => {
+  resultArr = srcArr.filter((elem, i) => {
     return (
-      result_arr.findIndex((elem2, j) => {
+      resultArr.findIndex((elem2, j) => {
         return elem.tag === elem2.tag;
       }) === i
     );
   });
 
-  return result_arr;
+  return resultArr;
 }
 
 /**
- * filter_by_tag
+ * filterByTag
  * 인자로 받은 tag로 filtering해주는 메서드
- * @param {*} src_arr - original array
+ * @param {*} srcArr - original array
  * @param {*} tag - filtering할 태그.
  * @returns tag에 맞게 필터링 된 결과 배열
  */
-function filter_by_tag(src_arr, tag) {
-  var result_arr = [];
+function filterByTag(srcArr, tag) {
+  var resultArr = [];
   // copy array.
-  src_arr.forEach(function (ticket) {
-    result_arr.push(ticket);
+  srcArr.forEach(function (ticket) {
+    resultArr.push(ticket);
   });
 
   // filter by tags
-  result_arr = src_arr.filter((elem) => {
+  resultArr = srcArr.filter((elem) => {
     return elem.tag === tag;
   });
 
-  return result_arr;
+  return resultArr;
 }

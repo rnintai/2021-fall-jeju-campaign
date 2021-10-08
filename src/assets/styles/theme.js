@@ -1,13 +1,13 @@
 const color = {
   gray: "#4f4f4f",
 
-  dark_orange: "#c45722",
+  darkOrange: "#c45722",
   orange: "#ec7742",
 
   green: "#6b9929",
-  light_green: "#b8d563",
+  lightGreen: "#b8d563",
 
-  dark_red: "#d9463e",
+  darkRed: "#d9463e",
 };
 
 const fontSize = {

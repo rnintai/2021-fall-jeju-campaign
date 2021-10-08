@@ -27,7 +27,7 @@ const Thumb = styled.img.attrs((props) => ({
 }))`
   width: 6.3rem;
   height: 6.3rem;
-  border: 0.3rem solid ${({ theme }) => theme.color.light_green};
+  border: 0.3rem solid ${({ theme }) => theme.color.lightGreen};
   border-radius: 100%;
   :nth-child(odd) {
     margin: 0 1rem;
