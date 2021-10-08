@@ -125,7 +125,7 @@ const DiscountedCost = styled.span`
 `;
 
 function Price(cost, ratio) {
-  var currencyFormatter = new Intl.NumberFormat("ko-KR", {
+  const currencyFormatter = new Intl.NumberFormat("ko-KR", {
     style: "currency",
     currency: "KRW",
   });
@@ -147,7 +147,7 @@ function Price(cost, ratio) {
 }
 
 export function Ticket({ tickets }) {
-  var tagArr = [];
+  let tagArr = [];
   tagArr = filterTagDuplication(tickets);
 
   const [activated, setActivated] = useState(tagArr[0].id);
@@ -217,7 +217,7 @@ export function SeeMore({ text }) {
  */
 
 function filterTagDuplication(srcArr) {
-  var resultArr = [];
+  let resultArr = [];
   // copy array.
   srcArr.forEach(function (ticket) {
     resultArr.push({
@@ -246,7 +246,7 @@ function filterTagDuplication(srcArr) {
  * @returns tag에 맞게 필터링 된 결과 배열
  */
 function filterByTag(srcArr, tag) {
-  var resultArr = [];
+  let resultArr = [];
   // copy array.
   srcArr.forEach(function (ticket) {
     resultArr.push(ticket);
