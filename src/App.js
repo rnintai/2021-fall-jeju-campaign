@@ -1,7 +1,7 @@
 import "./App.css";
 import { ThemeProvider } from "styled-components";
 import theme from "./assets/styles/theme";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 
 function App() {
   return (
