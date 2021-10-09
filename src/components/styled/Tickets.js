@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { MenuButton } from "./MenuButton";
+import { ProductCard } from "./ProductCard";
 
 export const TicketsWrap = styled.section`
   padding: 0 25%;
@@ -37,100 +38,6 @@ const StyledTicketsTable = styled.ul`
   margin-bottom: 4rem;
 `;
 
-const StyledTicket = styled.li`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  margin-bottom: 2rem;
-`;
-const Thumb = styled.img.attrs((props) => ({
-  src: props.src,
-}))`
-  width: 80%;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-`;
-
-const MetaData = styled.section`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  text-align: left;
-`;
-
-const Information = styled.div`
-  display: flex;
-  font-size: ${({ theme }) => theme.fontSize.ms};
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-`;
-const Sort = styled.span`
-  color: ${({ theme }) => theme.color.gray};
-`;
-const StyledDiscountRatio = styled.span`
-  color: white;
-  background-color: ${({ theme }) => theme.color.orange};
-  padding: 0 0.3rem;
-  border-radius: 0.6rem;
-  font-weight: 700;
-`;
-
-function DiscountRatio({ ratio }) {
-  return ratio !== undefined ? (
-    <StyledDiscountRatio>{ratio * 100 + "%"}</StyledDiscountRatio>
-  ) : null;
-}
-
-const TitleWrap = styled.div`
-  display: flex;
-  font-size: ${({ theme }) => theme.fontSize.m};
-  flex-direction: column;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-`;
-const Location = styled.span``;
-const TicketTitle = styled.span``;
-
-const CostWrap = styled.div`
-  font-size: ${({ theme }) => theme.fontSize.m};
-`;
-const StyledCost = styled.span`
-  color: ${(props) =>
-    props.discount ? ({ theme }) => theme.color.gray : "#000"};
-  text-decoration-line: ${(props) =>
-    props.discount ? "line-through" : "none"};
-  font-weight: ${(props) => (props.discount ? "300" : "700")};
-  margin-right: 0.3rem;
-`;
-const DiscountedCost = styled.span`
-  color: black;
-  text-decoration-line: none;
-  font-weight: 800;
-`;
-
-function Price(cost, ratio) {
-  const currencyFormatter = new Intl.NumberFormat("ko-KR", {
-    style: "currency",
-    currency: "KRW",
-  });
-  const costStr = currencyFormatter.format(cost).substr(1) + "원";
-
-  if (ratio === undefined) {
-    return <StyledCost>{costStr}</StyledCost>;
-  } else {
-    // \14,000 -> 14,000 -> 14,000원
-    const discountedStr =
-      currencyFormatter.format(cost * (1 - ratio)).substr(1) + "원";
-    return (
-      <CostWrap>
-        <StyledCost discount="true">{costStr}</StyledCost>
-        <DiscountedCost>{discountedStr}~</DiscountedCost>
-      </CostWrap>
-    );
-  }
-}
-
 export function Ticket({ tickets }) {
   let tagArr = [];
   tagArr = filterTagDuplication(tickets);
@@ -161,20 +68,17 @@ export function Ticket({ tickets }) {
       </TagWrap>
       <StyledTicketsTable>
         {sortedTickets.map((ticket) => (
-          <StyledTicket key={ticket.id}>
-            <Thumb src={ticket.thumb}></Thumb>
-            <MetaData>
-              <Information>
-                <Sort>{ticket.sort}</Sort>
-                <DiscountRatio ratio={ticket.discountRatio}></DiscountRatio>
-              </Information>
-              <TitleWrap>
-                <Location>[{ticket.location}]&nbsp;</Location>
-                <TicketTitle>{ticket.title}</TicketTitle>
-              </TitleWrap>
-              {Price(ticket.cost, ticket.discountRatio)}
-            </MetaData>
-          </StyledTicket>
+          <ProductCard
+            key={ticket.id}
+            themeColor={({ theme }) => theme.color.orange}
+            numbersInRow="2"
+            thumb={ticket.thumb}
+            sort={ticket.sort}
+            tag={ticket.location}
+            title={ticket.title}
+            originalPrice={ticket.cost}
+            discountRatio={ticket.discountRatio}
+          ></ProductCard>
         ))}
       </StyledTicketsTable>
     </StyledTicketsWrap>
