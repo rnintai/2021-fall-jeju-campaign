@@ -6,10 +6,10 @@ import { TicketsWrap, Title, Ticket, SeeMore } from "./styled/Tickets";
 function Tickets() {
   let [tickets, setTickets] = useState([]);
 
-  function searchApi() {
+  function fetchApi(path) {
     const url = process.env.REACT_APP_BASEURL;
     axios
-      .get(url + "/tickets")
+      .get(url + path)
       .then(function (response) {
         setTickets(response.data.tickets);
       })
@@ -27,7 +27,7 @@ function Tickets() {
       </TicketsWrap>
     );
   } else {
-    searchApi();
+    fetchApi("/tickets");
     return null;
   }
 }

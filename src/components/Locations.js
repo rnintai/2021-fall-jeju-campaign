@@ -6,10 +6,10 @@ import { LocationWrap } from "./styled/Location";
 function Locations() {
   let [locations, setLocations] = useState([]);
 
-  function apiLocation() {
+  function fetchApi(path) {
     const url = process.env.REACT_APP_BASEURL;
     axios
-      .get(url + "/locations")
+      .get(url + path)
       .then(function (response) {
         setLocations(response.data.locations);
       })
@@ -21,7 +21,7 @@ function Locations() {
   if (locations !== undefined && locations.length > 0) {
     return <LocationWrap locations={locations}></LocationWrap>;
   } else {
-    apiLocation();
+    fetchApi("/locations");
     return null;
   }
 }
