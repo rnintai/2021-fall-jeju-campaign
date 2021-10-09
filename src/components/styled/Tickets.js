@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+import { MenuButton } from "./MenuButton";
+
 export const TicketsWrap = styled.section`
   padding: 0 25%;
   transition: padding 0.5s ease-in-out;
@@ -19,23 +21,6 @@ const TagWrap = styled.ul`
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
-`;
-
-// const StyledTagMenu = styled.li`
-//   display: flex;
-// `;
-
-const TagBtn = styled.button`
-  cursor: pointer;
-  color: ${(props) =>
-    props.active === props.tagId
-      ? "white"
-      : ({ theme }) => theme.color.darkOrange};
-  font-size: ${({ theme }) => theme.fontSize.ml};
-  background-color: ${(props) =>
-    props.active === props.tagId ? ({ theme }) => theme.color.orange : "white"};
-  border: 1px solid ${({ theme }) => theme.color.darkOrange};
-  padding: 0.6rem 1.8rem;
 `;
 
 export function Title({ text }) {
@@ -159,17 +144,19 @@ export function Ticket({ tickets }) {
     <StyledTicketsWrap>
       <TagWrap>
         {tagArr.map((tag) => (
-          <TagBtn
+          <MenuButton
             key={tag.id}
+            tagId={tag.id}
+            primary={activated === tag.id}
+            size="medium"
+            label={tag.tag}
+            themeColor={({ theme }) => theme.color.orange}
+            secondaryColor={({ theme }) => theme.color.darkOrange}
             onClick={() => {
               setActivated(tag.id);
               setSortedTickets(filterByTag(tickets, tag.tag));
             }}
-            tagId={tag.id}
-            active={activated}
-          >
-            {tag.tag}
-          </TagBtn>
+          ></MenuButton>
         ))}
       </TagWrap>
       <StyledTicketsTable>
