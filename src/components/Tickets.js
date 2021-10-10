@@ -5,7 +5,7 @@ function Tickets() {
   const { payload, loading, error } = FetchApi("/tickets");
   return (
     <>
-      {loading && <span>Loading...</span>}
+      {loading && <span> </span>}
       {!loading && error && <span>{error}</span>}
       {!loading && payload && (
         <TicketsWrap>
