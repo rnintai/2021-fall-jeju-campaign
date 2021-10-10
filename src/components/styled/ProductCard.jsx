@@ -42,7 +42,7 @@ const StyledDiscountRatio = styled.span`
 `;
 
 function DiscountRatio({ themeColor, ratio }) {
-  return ratio !== undefined ? (
+  return ratio !== undefined && ratio !== 0 ? (
     <StyledDiscountRatio themeColor={themeColor}>
       {ratio * 100 + "%"}
     </StyledDiscountRatio>
