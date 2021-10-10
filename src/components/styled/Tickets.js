@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { MenuButton } from "./MenuButton";
 import { ProductCard } from "./ProductCard";
+import { ProductCardWrapper } from "./ProductCardWrapper";
 
 export const TicketsWrap = styled.section`
   padding: 0 25%;
@@ -29,14 +30,6 @@ export function Title({ text }) {
 }
 
 const StyledTicketsWrap = styled.ul``;
-const StyledTicketsTable = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #fff;
-  border-radius: 0.8rem;
-  padding-top: 2rem;
-  margin-bottom: 4rem;
-`;
 
 export function Ticket({ tickets }) {
   let tagArr = [];
@@ -66,7 +59,7 @@ export function Ticket({ tickets }) {
           ></MenuButton>
         ))}
       </TagWrap>
-      <StyledTicketsTable>
+      <ProductCardWrapper>
         {sortedTickets.map((ticket) => (
           <ProductCard
             key={ticket.id}
@@ -80,7 +73,7 @@ export function Ticket({ tickets }) {
             discountRatio={ticket.discountRatio}
           ></ProductCard>
         ))}
-      </StyledTicketsTable>
+      </ProductCardWrapper>
     </StyledTicketsWrap>
   );
 }
