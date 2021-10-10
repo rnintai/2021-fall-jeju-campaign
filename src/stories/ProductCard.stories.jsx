@@ -22,8 +22,6 @@ const Template = (args) => (
     <ProductCard {...args} />
     <ProductCard {...args} />
     <ProductCard {...args} />
-    <ProductCard {...args} />
-    <ProductCard {...args} />
   </FlexBox>
 );
 
