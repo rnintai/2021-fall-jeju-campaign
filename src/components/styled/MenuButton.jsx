@@ -7,7 +7,6 @@ const StyledMenuButton = styled.button`
     sans-serif;
   display: inline-block;
   cursor: pointer;
-  border: 1px solid #c45722;
   color: ${(props) => (props.primary ? "white" : props.secondaryColor)};
   background-color: ${(props) => (props.primary ? props.themeColor : "white")};
   border: 1px solid ${(props) => props.secondaryColor};
