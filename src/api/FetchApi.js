@@ -1,5 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 function FetchApi(url) {
   const [payload, setPayload] = useState(null);
