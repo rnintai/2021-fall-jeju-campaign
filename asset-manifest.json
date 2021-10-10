@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/2021-fall-jeju-campaign/static/css/main.7e7a612a.chunk.css",
-    "main.js": "/2021-fall-jeju-campaign/static/js/main.61b99d46.chunk.js",
-    "main.js.map": "/2021-fall-jeju-campaign/static/js/main.61b99d46.chunk.js.map",
-    "runtime-main.js": "/2021-fall-jeju-campaign/static/js/runtime-main.3404dae0.js",
-    "runtime-main.js.map": "/2021-fall-jeju-campaign/static/js/runtime-main.3404dae0.js.map",
-    "static/js/2.2c039888.chunk.js": "/2021-fall-jeju-campaign/static/js/2.2c039888.chunk.js",
-    "static/js/2.2c039888.chunk.js.map": "/2021-fall-jeju-campaign/static/js/2.2c039888.chunk.js.map",
-    "static/js/3.f69b9750.chunk.js": "/2021-fall-jeju-campaign/static/js/3.f69b9750.chunk.js",
-    "static/js/3.f69b9750.chunk.js.map": "/2021-fall-jeju-campaign/static/js/3.f69b9750.chunk.js.map",
-    "index.html": "/2021-fall-jeju-campaign/index.html",
-    "static/css/main.7e7a612a.chunk.css.map": "/2021-fall-jeju-campaign/static/css/main.7e7a612a.chunk.css.map",
-    "static/js/2.2c039888.chunk.js.LICENSE.txt": "/2021-fall-jeju-campaign/static/js/2.2c039888.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.7e7a612a.chunk.css",
+    "main.js": "/static/js/main.7e068d26.chunk.js",
+    "main.js.map": "/static/js/main.7e068d26.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c42911d1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c42911d1.js.map",
+    "static/js/2.44024f9b.chunk.js": "/static/js/2.44024f9b.chunk.js",
+    "static/js/2.44024f9b.chunk.js.map": "/static/js/2.44024f9b.chunk.js.map",
+    "static/js/3.f69b9750.chunk.js": "/static/js/3.f69b9750.chunk.js",
+    "static/js/3.f69b9750.chunk.js.map": "/static/js/3.f69b9750.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.7e7a612a.chunk.css.map": "/static/css/main.7e7a612a.chunk.css.map",
+    "static/js/2.44024f9b.chunk.js.LICENSE.txt": "/static/js/2.44024f9b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3404dae0.js",
-    "static/js/2.2c039888.chunk.js",
+    "static/js/runtime-main.c42911d1.js",
+    "static/js/2.44024f9b.chunk.js",
     "static/css/main.7e7a612a.chunk.css",
-    "static/js/main.61b99d46.chunk.js"
+    "static/js/main.7e068d26.chunk.js"
   ]
 }
