@@ -1,12 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 
 import { ProductCard } from "../components/styled/ProductCard";
-
-const FlexBox = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-`;
+import { ProductCardWrapper } from "../components/styled/ProductCardWrapper";
 
 export default {
   title: "Example/ProductCard",
@@ -17,12 +12,12 @@ export default {
 };
 
 const Template = (args) => (
-  <FlexBox>
+  <ProductCardWrapper>
     <ProductCard {...args} />
     <ProductCard {...args} />
     <ProductCard {...args} />
     <ProductCard {...args} />
-  </FlexBox>
+  </ProductCardWrapper>
 );
 
 export const Example = Template.bind({});
